@@ -1,0 +1,36 @@
+#这是帮助您开始操作的基本工作流程
+
+姓名：CI
+
+#控制工作流程何时运行
+：:
+  #触发推式或拉式请求事件的工作流，但仅限于“主”分支
+推:
+分支机构: [ "主要" ]
+pull_request:
+分支机构: [ "主要" ]
+
+  #允许您从“操作”选项卡手动运行此工作流
+workflow_dispatch:
+
+#工作流运行由一个或多个作业组成，这些作业可以按顺序或并行运行
+工作:
+  #此工作流包含一个名为“生成”的作业
+建立:
+    #作业将在其上运行的运行器类型
+连续的: ubuntu-最新
+
+    #步骤表示将作为作业的一部分执行的一系列任务
+步骤:
+      #签出$GitHub_WORKSPACE下的存储库，以便您的作业可以访问它
+      - uses: actions/checkout@v4
+
+      # Runs a single command using the runners shell
+      - 姓名: Run a one-line script
+        run: echo Hello, world!
+
+      # Runs a set of commands using the runners shell
+      - 姓名: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
